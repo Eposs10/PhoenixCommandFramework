@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * Provides a default implementation for handling exceptions in a standardized manner, ensuring
  * proper logging and user notification through the callback mechanism.
  */
-public interface ExceptionHandler {
+public interface IExceptionHandler {
     /**
      * Handles exceptions that occur during event processing by logging the error and
      * notifying the user through an {@link IReplyCallback}.

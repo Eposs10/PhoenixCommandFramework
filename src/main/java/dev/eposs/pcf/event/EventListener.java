@@ -25,9 +25,9 @@ import org.jetbrains.annotations.NotNull;
  * </p>
  */
 public class EventListener extends ListenerAdapter {
-    private final ExceptionHandler exceptionHandler;
+    private final IExceptionHandler exceptionHandler;
 
-    public EventListener(ExceptionHandler exceptionHandler) {
+    public EventListener(IExceptionHandler exceptionHandler) {
         this.exceptionHandler = exceptionHandler;
     }
 
