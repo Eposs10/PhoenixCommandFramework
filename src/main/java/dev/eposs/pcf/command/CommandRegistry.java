@@ -20,6 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * This class also provides helpers to publish the registered commands to Discord via JDA.
  */
 public class CommandRegistry {
+    private CommandRegistry() {
+    }
+    
     /**
      * Holds globally available commands mapped by their command name.
      */
