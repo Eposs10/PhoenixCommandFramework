@@ -1,6 +1,6 @@
 package dev.eposs.pcf.event;
 
-import dev.eposs.pcf.PCF;
+import dev.eposs.pcf.PhoenixCommandFramework;
 import net.dv8tion.jda.api.interactions.InteractionHook;
 import net.dv8tion.jda.api.interactions.callbacks.IReplyCallback;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +19,7 @@ public interface IExceptionHandler {
      * @param event the reply callback associated with the event, used to notify the user, must not be null
      */
     default void handleException(Exception e, @NotNull IReplyCallback event) {
-        PCF.LOGGER.error(e.getMessage(), e);
+        PhoenixCommandFramework.LOGGER.error(e.getMessage(), e);
 
         String msg = """
                 There was an %s handling your request.

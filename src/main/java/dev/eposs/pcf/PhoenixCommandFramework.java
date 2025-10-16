@@ -20,8 +20,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * during initialization and then read concurrently.
  * </p>
  */
-public class PCF {
-    private PCF() {
+public class PhoenixCommandFramework {
+    private PhoenixCommandFramework() {
     }
     
     public static final Logger LOGGER = LoggerFactory.getLogger("PCF");
@@ -60,7 +60,7 @@ public class PCF {
             throw new IllegalArgumentException("Owner ID cannot be null or blank.");
         }
 
-        PCF.botOwnerID = botOwnerID;
+        PhoenixCommandFramework.botOwnerID = botOwnerID;
         trustedUsersIDs.clear();
         if (initialTrustedUsers != null) {
             trustedUsersIDs.addAll(initialTrustedUsers);

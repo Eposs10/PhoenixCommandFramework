@@ -1,6 +1,6 @@
 package dev.eposs.pcf.command;
 
-import dev.eposs.pcf.PCF;
+import dev.eposs.pcf.PhoenixCommandFramework;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import org.jetbrains.annotations.NotNull;
@@ -75,7 +75,7 @@ public class CommandRegistry {
      */
     public static void setupGlobalCommands(@NotNull ReadyEvent event) {
         event.getJDA().updateCommands().addCommands(GLOBAL_COMMANDS.values().stream().map(CommandHandler::getCommandData).toList()).queue();
-        PCF.LOGGER.info("Updated global commands for {}", event.getJDA().getSelfUser().getName());
+        PhoenixCommandFramework.LOGGER.info("Updated global commands for {}", event.getJDA().getSelfUser().getName());
     }
 
     /**
@@ -85,7 +85,7 @@ public class CommandRegistry {
      */
     public static void setupGuildCommands(@NotNull Guild guild) {
         guild.updateCommands().addCommands(GUILD_COMMANDS.values().stream().map(CommandHandler::getCommandData).toList()).queue();
-        PCF.LOGGER.info("Updated guild ({} - {}) commands for {}", guild.getName(), guild.getId(), guild.getJDA().getSelfUser().getName());
+        PhoenixCommandFramework.LOGGER.info("Updated guild ({} - {}) commands for {}", guild.getName(), guild.getId(), guild.getJDA().getSelfUser().getName());
     }
 
     /**

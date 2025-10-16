@@ -1,6 +1,6 @@
 package dev.eposs.pcf.event;
 
-import dev.eposs.pcf.PCF;
+import dev.eposs.pcf.PhoenixCommandFramework;
 import dev.eposs.pcf.button.ButtonRegistry;
 import dev.eposs.pcf.command.CommandRegistry;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
@@ -48,7 +48,7 @@ public class EventListener extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        PCF.LOGGER.info("{} ({}) used /{}", event.getUser().getName(), event.getUser().getId(), event.getFullCommandName());
+        PhoenixCommandFramework.LOGGER.info("{} ({}) used /{}", event.getUser().getName(), event.getUser().getId(), event.getFullCommandName());
         CommandRegistry.getCommand(event.getName()).ifPresent(cmd -> {
             try {
                 cmd.execute(event);
@@ -60,7 +60,7 @@ public class EventListener extends ListenerAdapter {
 
     @Override
     public void onMessageContextInteraction(@NotNull MessageContextInteractionEvent event) {
-        PCF.LOGGER.info("{} ({}) used message context command \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getName());
+        PhoenixCommandFramework.LOGGER.info("{} ({}) used message context command \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getName());
         CommandRegistry.getCommand(event.getName()).ifPresent(cmd -> {
             try {
                 cmd.execute(event);
@@ -75,7 +75,7 @@ public class EventListener extends ListenerAdapter {
         String customId = event.getButton().getCustomId();
         if (customId == null) return;
 
-        PCF.LOGGER.info("{} ({}) used button \"{}\"", event.getUser().getName(), event.getUser().getId(), customId);
+        PhoenixCommandFramework.LOGGER.info("{} ({}) used button \"{}\"", event.getUser().getName(), event.getUser().getId(), customId);
 
         ButtonRegistry.getButton(customId).ifPresent(action -> {
             try {

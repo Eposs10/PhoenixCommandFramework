@@ -1,6 +1,6 @@
 package dev.eposs.pcf.command;
 
-import dev.eposs.pcf.PCF;
+import dev.eposs.pcf.PhoenixCommandFramework;
 import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +38,7 @@ public interface CommandHandler {
      * @return {@code true} if the user is NOT the owner (permission denied), otherwise {@code false}
      */
     default boolean userIsNotOwner(@NotNull GenericCommandInteractionEvent event) {
-        if (event.getUser().getId().equals(PCF.getBotOwnerID())) return false;
+        if (event.getUser().getId().equals(PhoenixCommandFramework.getBotOwnerID())) return false;
 
         if (event.isAcknowledged()) event.getHook().sendMessage("Missing permission").setEphemeral(true).queue();
         else event.reply("Missing permission").setEphemeral(true).queue();
@@ -55,7 +55,7 @@ public interface CommandHandler {
      * @return {@code true} if the user is NOT trusted (permission denied), otherwise {@code false}
      */
     default boolean userIsNotTrusted(@NotNull GenericCommandInteractionEvent event) {
-        if (!PCF.isTrustedUser(event.getUser().getId())) return false;
+        if (!PhoenixCommandFramework.isTrustedUser(event.getUser().getId())) return false;
 
         if (event.isAcknowledged()) event.getHook().sendMessage("Missing permission").setEphemeral(true).queue();
         else event.reply("Missing permission").setEphemeral(true).queue();
