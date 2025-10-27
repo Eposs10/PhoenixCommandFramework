@@ -1,6 +1,8 @@
 package dev.eposs.pcf.command;
 
 import dev.eposs.pcf.PhoenixCommandFramework;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import org.jetbrains.annotations.NotNull;
@@ -57,6 +59,15 @@ public interface CommandHandler {
     default boolean userIsNotTrusted(@NotNull GenericCommandInteractionEvent event) {
         if (!PhoenixCommandFramework.isTrustedUser(event.getUser().getId())) return false;
 
+        if (event.isAcknowledged()) event.getHook().sendMessage("Missing permission").setEphemeral(true).queue();
+        else event.reply("Missing permission").setEphemeral(true).queue();
+        return true;
+    }
+    
+    default boolean userIsNotGuildAdmin(@NotNull GenericCommandInteractionEvent event) {
+        Member member = event.getMember();
+        if (member != null && member.hasPermission(Permission.ADMINISTRATOR)) return false; 
+        
         if (event.isAcknowledged()) event.getHook().sendMessage("Missing permission").setEphemeral(true).queue();
         else event.reply("Missing permission").setEphemeral(true).queue();
         return true;
