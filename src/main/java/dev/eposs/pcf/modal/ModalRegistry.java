@@ -12,11 +12,11 @@ public class ModalRegistry {
 
     private static final Map<String, ModalHandler> MODALS = new ConcurrentHashMap<>();
 
-    public void register(@NotNull ModalHandler action) {
+    public static void register(@NotNull ModalHandler action) {
         MODALS.put(action.getCustomId(), action);
     }
 
-    public void register(@NotNull ModalHandler... actions) {
+    public static void register(@NotNull ModalHandler... actions) {
         for (ModalHandler action : actions) MODALS.put(action.getCustomId(), action);
     }
 
