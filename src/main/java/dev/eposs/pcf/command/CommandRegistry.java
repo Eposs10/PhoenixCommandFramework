@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CommandRegistry {
     private CommandRegistry() {
     }
-    
+
     /**
      * Holds globally available commands mapped by their command name.
      */
@@ -84,7 +84,12 @@ public class CommandRegistry {
      * @param guild the guild to update
      */
     public static void setupGuildCommands(@NotNull Guild guild) {
-        guild.updateCommands().addCommands(GUILD_COMMANDS.values().stream().map(CommandHandler::getCommandData).toList()).queue();
+        guild.updateCommands().addCommands(GUILD_COMMANDS.values().stream()
+                .filter(commandHandler -> {
+                    if (commandHandler.getTargetGuildIDs().isEmpty()) return true;
+                    return commandHandler.getTargetGuildIDs().contains(guild.getId());
+                })
+                .map(CommandHandler::getCommandData).toList()).queue();
         PhoenixCommandFramework.LOGGER.info("Updated guild ({} - {}) commands for {}", guild.getName(), guild.getId(), guild.getJDA().getSelfUser().getName());
     }
 
