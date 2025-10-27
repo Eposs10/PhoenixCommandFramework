@@ -68,7 +68,7 @@ public class PCFEventListener extends ListenerAdapter {
                     exceptionHandler.handleException(e, event);
                 }
             });
-        });
+        }).start();
     }
 
     @Override
@@ -86,7 +86,7 @@ public class PCFEventListener extends ListenerAdapter {
                     exceptionHandler.handleException(e, event);
                 }
             });
-        });
+        }).start();
     }
 
     @Override
@@ -100,7 +100,7 @@ public class PCFEventListener extends ListenerAdapter {
                     exceptionHandler.handleException(e, event);
                 }
             });
-        });
+        }).start();
     }
 
     @Override
@@ -114,7 +114,7 @@ public class PCFEventListener extends ListenerAdapter {
                     exceptionHandler.handleException(e, event);
                 }
             });
-        });
+        }).start();
     }
 
     @Override
@@ -128,7 +128,7 @@ public class PCFEventListener extends ListenerAdapter {
                     exceptionHandler.handleException(e, event);
                 }
             });
-        });
+        }).start();
     }
 
     @Override
@@ -142,7 +142,7 @@ public class PCFEventListener extends ListenerAdapter {
                     exceptionHandler.handleException(e, event);
                 }
             });
-        });
+        }).start();
     }
 
     @Override
@@ -156,6 +156,6 @@ public class PCFEventListener extends ListenerAdapter {
                     exceptionHandler.handleException(e, event);
                 }
             });
-        });
+        }).start();
     }
 }
