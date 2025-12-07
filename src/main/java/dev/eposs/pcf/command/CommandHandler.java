@@ -68,7 +68,7 @@ public interface CommandHandler {
      * @return {@code true} if the user is NOT trusted (permission denied), otherwise {@code false}
      */
     default boolean userIsNotTrusted(@NotNull GenericCommandInteractionEvent event) {
-        if (!PhoenixCommandFramework.isTrustedUser(event.getUser().getId())) return false;
+        if (PhoenixCommandFramework.isTrustedUser(event.getUser().getId())) return false;
 
         if (event.isAcknowledged()) event.getHook().sendMessage("Missing permission").setEphemeral(true).queue();
         else event.reply("Missing permission").setEphemeral(true).queue();
