@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
  * and automatically sends a "Missing permission" reply if the check fails.
  */
 public class PermissionChecker {
-    private final IReplyCallback interaction;
+    protected final IReplyCallback interaction;
 
     /**
      * Constructs a {@code PermissionChecker} for the specified interaction.
