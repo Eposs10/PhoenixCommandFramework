@@ -68,8 +68,9 @@ public class PermissionChecker {
      */
     public boolean isGuildAdmin() {
         Member member = interaction.getMember();
-        if (member == null) return false;
-        boolean check = member.hasPermission(Permission.ADMINISTRATOR);
+        boolean check;
+        if (member == null) check = false;
+        else check = member.hasPermission(Permission.ADMINISTRATOR);
         return replyAfterCheck(check);
     }
 }
