@@ -1,5 +1,6 @@
 package dev.eposs.pcf.command;
 
+import dev.eposs.pcf.permission.PermissionChecker;
 import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
@@ -29,7 +30,7 @@ public abstract class AbstractSlashCommand implements SlashCommandHandler {
     public Map<String, SubCommandHandler> getSubCommands() {
         return subCommands;
     }
-    
+
     /**
      * Default execution that safely casts the generic interaction to a slash
      * command interaction, enforces owner-only access, defers the reply with
@@ -41,7 +42,8 @@ public abstract class AbstractSlashCommand implements SlashCommandHandler {
     @Override
     public void execute(GenericCommandInteractionEvent genericEvent) throws Exception {
         if (!(genericEvent instanceof SlashCommandInteractionEvent event)) return;
-        if (userIsNotOwner(event)) return;
+        PermissionChecker permissionChecker = new PermissionChecker(event);
+        if (!permissionChecker.isBotOwner()) return;
 
         event.deferReply(isEphemeral(event)).queue();
         executeSubCommand(event);
