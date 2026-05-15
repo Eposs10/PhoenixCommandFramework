@@ -1,0 +1,33 @@
+name: Build Artifacts
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/main/**'
+      - 'pom.xml'
+      - '.github/workflows/artifacts.yml'
+
+jobs:
+  build:
+    name: Build and Upload Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Build
+        run: mvn --batch-mode --no-transfer-progress clean package
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Artifacts
+          path: target/*.jar
