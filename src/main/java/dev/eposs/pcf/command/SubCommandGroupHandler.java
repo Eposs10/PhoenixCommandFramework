@@ -3,6 +3,9 @@ package dev.eposs.pcf.command;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData;
 
+import java.util.Arrays;
+import java.util.Map;
+
 /**
  * Represents the behavior and definition of a single slash sub-command group.
  * Implementations provide the JDA {@link SubcommandGroupData} used for command
@@ -24,7 +27,7 @@ public interface SubCommandGroupHandler {
      *
      * @return map of sub-command name to its action
      */
-    java.util.Map<String, SubCommandHandler> getSubCommands();
+    Map<String, SubCommandHandler> getSubCommands();
 
     /**
      * Registers a single {@link SubCommandHandler} using its declared name.
@@ -41,7 +44,7 @@ public interface SubCommandGroupHandler {
      * @param actions the sub-commands to add
      */
     default void registerSubCommands(SubCommandHandler... actions) {
-        java.util.Arrays.stream(actions).forEach(this::registerSubCommand);
+        Arrays.stream(actions).forEach(this::registerSubCommand);
     }
 
     /**
