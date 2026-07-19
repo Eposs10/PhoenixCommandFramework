@@ -14,12 +14,20 @@ import java.util.Map;
  * Subclasses can register {@link SubCommandHandler} instances in the constructor via
  * {@link SlashCommandHandler#registerSubCommand(SubCommandHandler)} or
  * {@link SlashCommandHandler#registerSubCommands(SubCommandHandler...)}.
+ * <p>
+ * Subclasses can also register {@link SubCommandGroupHandler} instances via
+ * {@link SlashCommandHandler#registerSubCommandGroup(SubCommandGroupHandler)} or
+ * {@link SlashCommandHandler#registerSubCommandGroups(SubCommandGroupHandler...)}.
  */
 public abstract class AbstractSlashCommand implements SlashCommandHandler {
     /**
      * Mutable registry of sub-commands mapped by their name.
      */
     private final Map<String, SubCommandHandler> subCommands = new HashMap<>();
+    /**
+     * Mutable registry of sub-command groups mapped by their name.
+     */
+    private final Map<String, SubCommandGroupHandler> subCommandGroups = new HashMap<>();
 
     /**
      * Provides access to the mutable sub-command registry.
@@ -29,6 +37,16 @@ public abstract class AbstractSlashCommand implements SlashCommandHandler {
     @Override
     public Map<String, SubCommandHandler> getSubCommands() {
         return subCommands;
+    }
+
+    /**
+     * Provides access to the mutable sub-command group registry.
+     *
+     * @return a map of sub-command group name to handler
+     */
+    @Override
+    public Map<String, SubCommandGroupHandler> getSubCommandGroups() {
+        return subCommandGroups;
     }
 
     /**
