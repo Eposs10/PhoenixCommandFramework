@@ -44,12 +44,14 @@ dependencies {
 Commands are published when JDA becomes ready. Guild commands are updated when guilds become ready or when the bot joins a guild.
 
 ```java
-new PCF("YOUR_DISCORD_USER_ID", Set.of());
+public static void main(String[] args) {
+    new PCF("YOUR_DISCORD_USER_ID", Set.of());
 
-CommandRegistry.register(CommandRegistry.Type.GLOBAL, new MySlashCommand());
-ButtonRegistry.register(new MyButtonHandler());
+    CommandRegistry.register(CommandRegistry.Type.GLOBAL, new MySlashCommand());
+    ButtonRegistry.register(new MyButtonHandler());
 
-JDABuilder.createDefault(token)
-        .addEventListeners(new PCFEventListener(pcf) // Optional: Add custom implementation of IExceptionHandler
-        .build();
+    JDABuilder.createDefault(token)
+            .addEventListeners(new PCFEventListener(pcf)) // Optional: Add custom implementation of IExceptionHandler
+            .build();
+}
 ```
