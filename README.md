@@ -1,3 +1,7 @@
+[![build](https://github.com/Eposs10/PhoenixCommandFramework/actions/workflows/ci.yml/badge.svg)](https://github.com/Eposs10/PhoenixCommandFramework/actions/workflows/ci.yml)
+[![maven-central](https://img.shields.io/maven-metadata/v.svg?metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fdev%2Feposs%2FPCF%2Fmaven-metadata.xml&label=maven-central&filter=%21%2A-preview%2A&logo=apachemaven&color=blue)](https://github.com/Eposs10/PhoenixCommandFramework/releases)
+[![License](https://img.shields.io/badge/License-MIT-white.svg)](https://license.eposs.dev/MIT)
+
 # Phoenix Command Framework
 
 A small Discord bot command utility for JDA bots. PCF provides registries and event routing for slash commands, context commands, buttons, modals, string selects, and entity selects.
