@@ -34,7 +34,7 @@ public interface CommandHandler {
      * Executes the command for a generic interaction event.
      * Implementations may down-cast the event to a concrete type as needed.
      *
-     * @param pcf          the PCF instance
+     * @param pcf          the {@link PCF} instance
      * @param genericEvent the incoming interaction
      * @throws Exception if execution fails
      */

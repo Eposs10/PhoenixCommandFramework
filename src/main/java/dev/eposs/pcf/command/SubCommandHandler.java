@@ -22,7 +22,7 @@ public interface SubCommandHandler {
     /**
      * Executes the sub-command logic for the given event.
      *
-     * @param pcf   the PCF instance
+     * @param pcf   the {@link PCF} instance
      * @param event the slash command interaction event
      * @throws Exception if command execution fails
      */

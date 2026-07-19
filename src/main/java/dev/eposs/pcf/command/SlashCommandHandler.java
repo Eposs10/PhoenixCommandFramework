@@ -106,7 +106,7 @@ public interface SlashCommandHandler extends CommandHandler {
      * Resolves the requested sub-command from the event and executes it if present.
      * This handles both direct sub-commands and sub-commands within groups.
      *
-     * @param pcf   the PCF instance
+     * @param pcf   the {@link PCF} instance
      * @param event the slash command interaction
      * @throws Exception if the sub-command execution throws
      */

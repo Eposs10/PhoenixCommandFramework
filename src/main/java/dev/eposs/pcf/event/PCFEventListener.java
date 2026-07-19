@@ -21,18 +21,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.ThreadFactory;
 
-/**
- * <p>
- * EventListener serves as the primary bridge for handling various events triggered by the bot's interaction
- * with Discord through the JDA library. This class extends {@code ListenerAdapter} and overrides specific
- * event-handling methods to provide custom implementations for application logic.
- * </p>
- * <p>
- * It includes the mechanism to set up and manage commands, handle slash command interactions, message context
- * interactions, and button interactions. Additionally, it leverages an {@code ExceptionHandler} to ensure that
- * errors during event processing are appropriately managed.
- * </p>
- */
 public class PCFEventListener extends ListenerAdapter {
     ThreadFactory threadFactory = Thread.ofVirtual()
             .name("PCF-Event-Thread")
@@ -42,9 +30,27 @@ public class PCFEventListener extends ListenerAdapter {
     private final PCF pcf;
     private final IExceptionHandler exceptionHandler;
 
+    /**
+     * Constructs a new instance of {@code PCFEventListener} with the specified {@code PCF} instance
+     * and exception handler.
+     *
+     * @param pcf              the {@link PCF} instance
+     * @param exceptionHandler the {@link IExceptionHandler}, must not be null
+     */
     public PCFEventListener(PCF pcf, IExceptionHandler exceptionHandler) {
         this.pcf = pcf;
         this.exceptionHandler = exceptionHandler;
+    }
+
+    /**
+     * Constructs a new {@code PCFEventListener} with the specified {@code PCF} instance. 
+     * The {@link PCFDefaultExceptionHandler} is used as the default exception handler.
+     *
+     * @param pcf the {@link PCF} instance
+     */
+    public PCFEventListener(PCF pcf) {
+        this.pcf = pcf;
+        this.exceptionHandler = new PCFDefaultExceptionHandler();
     }
 
     @Override

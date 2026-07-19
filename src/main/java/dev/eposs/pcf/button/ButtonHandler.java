@@ -27,7 +27,7 @@ public interface ButtonHandler {
     /**
      * Executes the action for the given button interaction.
      *
-     * @param pcf   the PCF instance
+     * @param pcf   the {@link PCF} instance
      * @param event the JDA button interaction event
      * @throws Exception if the execution fails for any reason
      */

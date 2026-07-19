@@ -56,7 +56,7 @@ public abstract class AbstractSlashCommand implements SlashCommandHandler {
      * command interaction, enforces owner-only access, defers the reply with
      * the appropriate ephemeral state, and dispatches to the chosen sub-command.
      *
-     * @param pcf          the PCF instance
+     * @param pcf          the {@link PCF} instance
      * @param genericEvent the incoming interaction event
      * @throws Exception if a sub-command execution throws
      */

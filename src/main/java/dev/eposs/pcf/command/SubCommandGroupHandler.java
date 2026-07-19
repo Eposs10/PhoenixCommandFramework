@@ -51,7 +51,7 @@ public interface SubCommandGroupHandler {
     /**
      * Resolves the requested sub-command from the event and executes it if present.
      *
-     * @param pcf   the PCF instance
+     * @param pcf   the {@link PCF} instance
      * @param event the slash command interaction
      * @throws Exception if the sub-command execution throws
      */

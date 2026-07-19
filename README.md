@@ -46,6 +46,6 @@ CommandRegistry.register(CommandRegistry.Type.GLOBAL, new MySlashCommand());
 ButtonRegistry.register(new MyButtonHandler());
 
 JDABuilder.createDefault(token)
-        .addEventListeners(new PCFEventListener(pcf, new PCFDefaultExceptionHandler())
+        .addEventListeners(new PCFEventListener(pcf) // Optional: Add custom implementation of IExceptionHandler
         .build();
 ```
