@@ -6,7 +6,7 @@
 
     <groupId>dev.eposs</groupId>
     <artifactId>PCF</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1</version>
     <packaging>jar</packaging>
     
     <properties>
