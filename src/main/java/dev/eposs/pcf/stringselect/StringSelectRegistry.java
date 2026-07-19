@@ -22,6 +22,7 @@ public class StringSelectRegistry {
 
     @NotNull
     public static Optional<StringSelectHandler> getStringSelect(String customId) {
+        if (customId == null) return Optional.empty();
         return STRING_SELECTS.entrySet().stream()
                 .filter(entry -> customId.startsWith(entry.getKey()))
                 .map(Map.Entry::getValue)

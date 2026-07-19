@@ -1,10 +1,12 @@
 package dev.eposs.pcf.command;
 
+import dev.eposs.pcf.PCF;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
+import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -36,6 +38,13 @@ public interface SlashCommandHandler extends CommandHandler {
     Map<String, SubCommandHandler> getSubCommands();
 
     /**
+     * Returns the mutable registry of known sub-command groups.
+     *
+     * @return map of sub-command group name to its handler
+     */
+    Map<String, SubCommandGroupHandler> getSubCommandGroups();
+
+    /**
      * Registers a single {@link SubCommandHandler} using its declared name.
      *
      * @param action the sub-command to add
@@ -54,6 +63,24 @@ public interface SlashCommandHandler extends CommandHandler {
     }
 
     /**
+     * Registers a single {@link SubCommandGroupHandler} using its declared name.
+     *
+     * @param group the sub-command group to add
+     */
+    default void registerSubCommandGroup(SubCommandGroupHandler group) {
+        getSubCommandGroups().put(group.getSubCommandGroupData().getName(), group);
+    }
+
+    /**
+     * Convenience to add all sub-command groups at once.
+     *
+     * @param groups the sub-command groups to add
+     */
+    default void registerSubCommandGroups(@NotNull SubCommandGroupHandler... groups) {
+        Arrays.stream(groups).forEach(this::registerSubCommandGroup);
+    }
+
+    /**
      * Collects the {@link SubcommandData} from all registered sub-commands.
      *
      * @return list of sub-command definitions for JDA registration
@@ -65,17 +92,40 @@ public interface SlashCommandHandler extends CommandHandler {
     }
 
     /**
-     * Resolves the requested sub-command from the event and executes it if present.
+     * Collects the {@link SubcommandGroupData} from all registered sub-command groups.
      *
+     * @return list of sub-command group definitions for JDA registration
+     */
+    default List<SubcommandGroupData> subCommandGroupData() {
+        return getSubCommandGroups().values().stream()
+                .map(SubCommandGroupHandler::getSubCommandGroupData)
+                .toList();
+    }
+
+    /**
+     * Resolves the requested sub-command from the event and executes it if present.
+     * This handles both direct sub-commands and sub-commands within groups.
+     *
+     * @param pcf   the {@link PCF} instance
      * @param event the slash command interaction
      * @throws Exception if the sub-command execution throws
      */
-    default void executeSubCommand(@NotNull SlashCommandInteractionEvent event) throws Exception {
-        String name = event.getSubcommandName();
-        if (name == null) return;
+    default void executeSubCommand(PCF pcf, @NotNull SlashCommandInteractionEvent event) throws Exception {
+        String subCommandName = event.getSubcommandName();
+        if (subCommandName == null) return;
 
-        SubCommandHandler subCommand = getSubCommands().get(name);
-        if (subCommand != null) subCommand.execute(event);
+        String subCommandGroupName = event.getSubcommandGroup();
+
+        if (subCommandGroupName != null) {
+            SubCommandGroupHandler group = getSubCommandGroups().get(subCommandGroupName);
+            if (group != null) {
+                group.executeSubCommand(pcf, event);
+                return;
+            }
+        }
+
+        SubCommandHandler subCommand = getSubCommands().get(subCommandName);
+        if (subCommand != null) subCommand.execute(pcf, event);
     }
 
     /**

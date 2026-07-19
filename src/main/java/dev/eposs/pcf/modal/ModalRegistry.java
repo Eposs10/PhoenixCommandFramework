@@ -17,11 +17,12 @@ public class ModalRegistry {
     }
 
     public static void register(@NotNull ModalHandler... actions) {
-        for (ModalHandler action : actions) MODALS.put(action.getCustomId(), action);
+        for (ModalHandler action : actions) register(action);
     }
 
     @NotNull
     public static Optional<ModalHandler> getModal(String customId) {
+        if (customId == null) return Optional.empty();
         return Optional.ofNullable(MODALS.get(customId));
     }
 }

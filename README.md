@@ -1,36 +1,51 @@
 # Phoenix Command Framework
 
-A small Java command utility for JDA bots. PCF provides registries and event routing for slash commands, context commands, buttons, modals, string selects, and entity selects.
+A small Discord bot command utility for JDA bots. PCF provides registries and event routing for slash commands, context commands, buttons, modals, string selects, and entity selects.
 
 ## Requirements
 
 - Java 21+
 - JDA 6
-- Maven
+- Maven / Gradle
 
 ## Installation
 
+This library is available on maven central. The latest version is always shown in the [GitHub Release](https://github.com/Eposs10/PhoenixCommandFramework/releases).
+
+### Maven:
+
 ```xml
+
 <dependency>
-    <groupId>dev.eposs.pcf</groupId>
-    <artifactId>PhoenixCommandFramework</artifactId>
-    <version>0.4.3</version>
+    <groupId>dev.eposs</groupId>
+    <artifactId>PCF</artifactId>
+    <version>$version</version> <!-- replace $version with the latest version -->
 </dependency>
+```
+
+### Gradle:
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("dev.eposs:PCF:$version") // replace $version with the latest version
+}
 ```
 
 ## Basic Usage
 
+Commands are published when JDA becomes ready. Guild commands are updated when guilds become ready or when the bot joins a guild.
+
 ```java
-PhoenixCommandFramework.init("YOUR_DISCORD_USER_ID", Set.of());
+new PCF("YOUR_DISCORD_USER_ID", Set.of());
 
 CommandRegistry.register(CommandRegistry.Type.GLOBAL, new MySlashCommand());
 ButtonRegistry.register(new MyButtonHandler());
 
 JDABuilder.createDefault(token)
-        .addEventListeners(new PCFEventListener((exception, event) -> {
-            exception.printStackTrace();
-        }))
+        .addEventListeners(new PCFEventListener(pcf) // Optional: Add custom implementation of IExceptionHandler
         .build();
 ```
-
-Commands are published when JDA becomes ready. Guild commands are updated when guilds become ready or when the bot joins a guild.

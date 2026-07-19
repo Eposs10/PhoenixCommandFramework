@@ -1,6 +1,6 @@
 package dev.eposs.pcf.permission;
 
-import dev.eposs.pcf.PhoenixCommandFramework;
+import dev.eposs.pcf.PCF;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.interactions.callbacks.IReplyCallback;
@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
  * and automatically sends a "Missing permission" reply if the check fails.
  */
 public class PermissionChecker {
+    private final PCF pcf;
     protected final IReplyCallback interaction;
 
     /**
@@ -20,7 +21,8 @@ public class PermissionChecker {
      *
      * @param interaction the interaction to check permissions for
      */
-    public PermissionChecker(@NotNull IReplyCallback interaction) {
+    public PermissionChecker(PCF pcf, @NotNull IReplyCallback interaction) {
+        this.pcf = pcf;
         this.interaction = interaction;
     }
 
@@ -47,7 +49,7 @@ public class PermissionChecker {
      * @return {@code true} if the user is the bot owner, {@code false} otherwise
      */
     public boolean isBotOwner() {
-        boolean check = interaction.getUser().getId().equals(PhoenixCommandFramework.getBotOwnerID());
+        boolean check = interaction.getUser().getId().equals(pcf.getBotOwnerID());
         return replyAfterCheck(check);
     }
 
@@ -57,7 +59,7 @@ public class PermissionChecker {
      * @return {@code true} if the user is trusted, {@code false} otherwise
      */
     public boolean isTrusted() {
-        boolean check = PhoenixCommandFramework.isTrustedUser(interaction.getUser().getId());
+        boolean check = pcf.isTrustedUser(interaction.getUser().getId());
         return replyAfterCheck(check);
     }
 
