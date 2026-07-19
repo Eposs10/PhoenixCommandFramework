@@ -63,6 +63,7 @@ public class CommandRegistry {
      */
     @NotNull
     public static Optional<CommandHandler> getCommand(String name) {
+        if (name == null) return Optional.empty();
         CommandHandler command = GLOBAL_COMMANDS.get(name);
         if (command == null) command = GUILD_COMMANDS.get(name);
         return Optional.ofNullable(command);

@@ -22,6 +22,7 @@ public class ModalRegistry {
 
     @NotNull
     public static Optional<ModalHandler> getModal(String customId) {
+        if (customId == null) return Optional.empty();
         return Optional.ofNullable(MODALS.get(customId));
     }
 }
