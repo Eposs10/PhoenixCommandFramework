@@ -1,7 +1,9 @@
 package dev.eposs.pcf.command;
 
+import dev.eposs.pcf.PCF;
 import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
@@ -32,8 +34,9 @@ public interface CommandHandler {
      * Executes the command for a generic interaction event.
      * Implementations may down-cast the event to a concrete type as needed.
      *
+     * @param pcf          the PCF instance
      * @param genericEvent the incoming interaction
      * @throws Exception if execution fails
      */
-    void execute(GenericCommandInteractionEvent genericEvent) throws Exception;
+    void execute(PCF pcf, @NotNull GenericCommandInteractionEvent genericEvent) throws Exception;
 }

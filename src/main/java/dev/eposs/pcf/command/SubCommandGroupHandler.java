@@ -1,5 +1,6 @@
 package dev.eposs.pcf.command;
 
+import dev.eposs.pcf.PCF;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData;
 
@@ -50,14 +51,15 @@ public interface SubCommandGroupHandler {
     /**
      * Resolves the requested sub-command from the event and executes it if present.
      *
+     * @param pcf   the PCF instance
      * @param event the slash command interaction
      * @throws Exception if the sub-command execution throws
      */
-    default void executeSubCommand(SlashCommandInteractionEvent event) throws Exception {
+    default void executeSubCommand(PCF pcf, SlashCommandInteractionEvent event) throws Exception {
         String name = event.getSubcommandName();
         if (name == null) return;
 
         SubCommandHandler subCommand = getSubCommands().get(name);
-        if (subCommand != null) subCommand.execute(event);
+        if (subCommand != null) subCommand.execute(pcf, event);
     }
 }

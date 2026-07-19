@@ -1,5 +1,6 @@
 package dev.eposs.pcf.button;
 
+import dev.eposs.pcf.PCF;
 import net.dv8tion.jda.api.components.buttons.Button;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import org.jetbrains.annotations.NotNull;
@@ -26,10 +27,11 @@ public interface ButtonHandler {
     /**
      * Executes the action for the given button interaction.
      *
+     * @param pcf   the PCF instance
      * @param event the JDA button interaction event
      * @throws Exception if the execution fails for any reason
      */
-    void execute(@NotNull ButtonInteractionEvent event) throws Exception;
+    void execute(PCF pcf, @NotNull ButtonInteractionEvent event) throws Exception;
 
     /**
      * Utility to add this action's {@link #getIdPrefix()} to the provided button's custom id.

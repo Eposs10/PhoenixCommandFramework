@@ -1,7 +1,9 @@
 package dev.eposs.pcf.command;
 
+import dev.eposs.pcf.PCF;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents the behavior and definition of a single slash sub-command.
@@ -20,9 +22,10 @@ public interface SubCommandHandler {
     /**
      * Executes the sub-command logic for the given event.
      *
+     * @param pcf   the PCF instance
      * @param event the slash command interaction event
      * @throws Exception if command execution fails
      */
-    void execute(SlashCommandInteractionEvent event) throws Exception;
+    void execute(PCF pcf, @NotNull SlashCommandInteractionEvent event) throws Exception;
 }
 
