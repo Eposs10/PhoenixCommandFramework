@@ -28,10 +28,19 @@ public class PCF {
         }
 
         this.botOwnerID = botOwnerID;
-        trustedUsersIDs.clear();
         if (initialTrustedUsers != null) {
             trustedUsersIDs.addAll(initialTrustedUsers);
         }
+    }
+
+    /**
+     * Initializes the PhoenixCommandFramework with the given bot owner ID and no initial trusted users.
+     *
+     * @param botOwnerID the Discord user ID of the bot owner, must not be null or blank
+     * @throws IllegalArgumentException if the bot owner ID is null or blank
+     */
+    public PCF(String botOwnerID) {
+        this(botOwnerID, null);
     }
 
     /**

@@ -45,7 +45,7 @@ Commands are published when JDA becomes ready. Guild commands are updated when g
 
 ```java
 public static void main(String[] args) {
-    new PCF("YOUR_DISCORD_USER_ID", Set.of());
+    new PCF("YOUR_DISCORD_USER_ID"); // Optional: Add a set trusted users (Set.of())
 
     CommandRegistry.register(CommandRegistry.Type.GLOBAL, new MySlashCommand());
     ButtonRegistry.register(new MyButtonHandler());
