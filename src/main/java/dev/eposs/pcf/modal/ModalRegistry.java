@@ -17,7 +17,7 @@ public class ModalRegistry {
     }
 
     public static void register(@NotNull ModalHandler... actions) {
-        for (ModalHandler action : actions) MODALS.put(action.getCustomId(), action);
+        for (ModalHandler action : actions) register(action);
     }
 
     @NotNull
