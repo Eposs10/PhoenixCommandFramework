@@ -34,7 +34,10 @@ import java.util.concurrent.ThreadFactory;
  * </p>
  */
 public class PCFEventListener extends ListenerAdapter {
-    ThreadFactory threadFactory = Thread.ofVirtual().name("PCF-Event-Thread").factory();
+    ThreadFactory threadFactory = Thread.ofVirtual()
+            .name("PCF-Event-Thread")
+            .uncaughtExceptionHandler((t, e) -> PhoenixCommandFramework.LOGGER.error("Uncaught exception in {}", t.getName(), e))
+            .factory();
 
     private final IExceptionHandler exceptionHandler;
 
