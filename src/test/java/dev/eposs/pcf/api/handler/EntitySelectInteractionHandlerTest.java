@@ -1,6 +1,5 @@
-package dev.eposs.pcf.entityselect;
+package dev.eposs.pcf.api.handler;
 
-import dev.eposs.pcf.api.handler.EntitySelectInteractionHandler;
 import net.dv8tion.jda.api.components.selections.EntitySelectMenu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

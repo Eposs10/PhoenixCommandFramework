@@ -1,6 +1,5 @@
-package dev.eposs.pcf;
+package dev.eposs.pcf.api;
 
-import dev.eposs.pcf.api.PCF;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;

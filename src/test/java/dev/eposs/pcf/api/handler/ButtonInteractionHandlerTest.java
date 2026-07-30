@@ -1,6 +1,5 @@
-package dev.eposs.pcf.button;
+package dev.eposs.pcf.api.handler;
 
-import dev.eposs.pcf.api.handler.ButtonInteractionHandler;
 import net.dv8tion.jda.api.components.buttons.Button;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

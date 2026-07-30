@@ -1,6 +1,5 @@
-package dev.eposs.pcf.stringselect;
+package dev.eposs.pcf.api.handler;
 
-import dev.eposs.pcf.api.handler.StringSelectInteractionHandler;
 import net.dv8tion.jda.api.components.selections.StringSelectMenu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
