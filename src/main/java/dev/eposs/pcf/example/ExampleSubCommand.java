@@ -2,6 +2,7 @@ package dev.eposs.pcf.example;
 
 import dev.eposs.pcf.api.PCF;
 import dev.eposs.pcf.api.handler.SubCommandHandler;
+import net.dv8tion.jda.api.components.buttons.Button;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 
@@ -15,6 +16,7 @@ public class ExampleSubCommand extends SubCommandHandler {
 
     @Override
     public void execute(PCF pcf, SlashCommandInteractionEvent event) throws Exception {
-
+        Button button = pcf.BUTTONS.get(ExampleButton.class).orElseThrow()
+                .withPrefixedId(Button.danger(event.getUser().getId(), "Test"));
     }
 }

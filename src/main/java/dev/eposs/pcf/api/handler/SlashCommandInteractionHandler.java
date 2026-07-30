@@ -47,12 +47,12 @@ public abstract class SlashCommandInteractionHandler implements CommandInteracti
         String subCommandGroupName = event.getSubcommandGroup();
 
         if (subCommandGroupName != null) {
-            Optional<SubCommandGroupHandler> group = subCommandGroupHandlerRegistry.get(subCommandGroupName);
+            Optional<SubCommandGroupHandler> group = subCommandGroupHandlerRegistry.getByID(subCommandGroupName);
             if (group.isPresent()) group.get().execute(pcf, event);
             else throw new IllegalArgumentException("Sub-command group not found: " + subCommandGroupName);
         }
 
-        Optional<SubCommandHandler> subCommand = subCommandHandlerRegistry.get(subCommandName);
+        Optional<SubCommandHandler> subCommand = subCommandHandlerRegistry.getByID(subCommandName);
         if (subCommand.isPresent()) subCommand.get().execute(pcf, event);
         else throw new IllegalArgumentException("Sub-command not found: " + subCommandName);
     }

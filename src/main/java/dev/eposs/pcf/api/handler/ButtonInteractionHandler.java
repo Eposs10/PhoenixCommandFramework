@@ -1,6 +1,5 @@
 package dev.eposs.pcf.api.handler;
 
-import dev.eposs.pcf.api.PCF;
 import dev.eposs.pcf.internal.InteractionHandler;
 import net.dv8tion.jda.api.components.buttons.Button;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
@@ -23,15 +22,6 @@ public interface ButtonInteractionHandler extends InteractionHandler<ButtonInter
      * @return the non-empty custom id prefix used for registry lookup
      */
     String getIdPrefix();
-
-    /**
-     * Executes the action for the given button interaction.
-     *
-     * @param pcf   the {@link PCF} instance
-     * @param event the JDA button interaction event
-     * @throws Exception if the execution fails for any reason
-     */
-    void execute(PCF pcf, ButtonInteractionEvent event) throws Exception;
 
     /**
      * Utility to add this action's {@link #getIdPrefix()} to the provided button's custom id.

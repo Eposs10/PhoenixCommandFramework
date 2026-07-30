@@ -12,7 +12,7 @@ public class ModalInteractionHandlerRegistry extends AbstractRegistry<ModalInter
     }
 
     @Override
-    public Optional<ModalInteractionHandler> get(String id) {
+    public Optional<ModalInteractionHandler> getByID(String id) {
         if (id == null || id.isEmpty()) return Optional.empty();
         return Optional.ofNullable(handlers.get(id));
     }

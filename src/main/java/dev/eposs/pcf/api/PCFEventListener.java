@@ -85,7 +85,7 @@ public class PCFEventListener extends ListenerAdapter {
 
             PCF.LOGGER.info("{} ({}) used button \"{}\"", event.getUser().getName(), event.getUser().getId(), customId);
 
-            pcf.BUTTONS.get(customId).ifPresent(handler -> {
+            pcf.BUTTONS.getByID(customId).ifPresent(handler -> {
                 try {
                     handler.executeRaw(pcf, event);
                 } catch (Exception e) {
@@ -127,7 +127,7 @@ public class PCFEventListener extends ListenerAdapter {
     public void onModalInteraction(@NotNull ModalInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used modal \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getModalId());
-            pcf.MODALS.get(event.getModalId()).ifPresent(handler -> {
+            pcf.MODALS.getByID(event.getModalId()).ifPresent(handler -> {
                 try {
                     handler.executeRaw(pcf, event);
                 } catch (Exception e) {
@@ -141,7 +141,7 @@ public class PCFEventListener extends ListenerAdapter {
     public void onStringSelectInteraction(@NotNull StringSelectInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used string select \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getSelectMenu().getCustomId());
-            pcf.STRING_SELECT_MENUS.get(event.getSelectMenu().getCustomId()).ifPresent(handler -> {
+            pcf.STRING_SELECT_MENUS.getByID(event.getSelectMenu().getCustomId()).ifPresent(handler -> {
                 try {
                     handler.executeRaw(pcf, event);
                 } catch (Exception e) {
@@ -155,7 +155,7 @@ public class PCFEventListener extends ListenerAdapter {
     public void onEntitySelectInteraction(@NotNull EntitySelectInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used entity select \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getSelectMenu().getCustomId());
-            pcf.ENTITY_SELECT_MENUS.get(event.getSelectMenu().getCustomId()).ifPresent(handler -> {
+            pcf.ENTITY_SELECT_MENUS.getByID(event.getSelectMenu().getCustomId()).ifPresent(handler -> {
                 try {
                     handler.executeRaw(pcf, event);
                 } catch (Exception e) {

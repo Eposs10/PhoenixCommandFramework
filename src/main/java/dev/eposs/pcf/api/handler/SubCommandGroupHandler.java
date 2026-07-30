@@ -36,7 +36,7 @@ public abstract class SubCommandGroupHandler implements InteractionHandler<Slash
         String name = event.getSubcommandName();
         if (name == null) return;
 
-        Optional<SubCommandHandler> subCommand = subCommandHandlerRegistry.get(name);
+        Optional<SubCommandHandler> subCommand = subCommandHandlerRegistry.getByID(name);
         if (subCommand.isPresent()) subCommand.get().execute(pcf, event);
         else throw new IllegalArgumentException("Sub-command not found: " + name);
     }

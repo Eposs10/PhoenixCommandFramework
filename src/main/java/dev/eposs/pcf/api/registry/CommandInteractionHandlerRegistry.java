@@ -55,9 +55,9 @@ public class CommandInteractionHandlerRegistry {
      */
     public Optional<CommandInteractionHandler<?>> get(String id) {
         if (id == null || id.isEmpty()) return Optional.empty();
-        var commandInteractionHandler = globalCommandInteractionHandlerRegistry.get(id);
+        var commandInteractionHandler = globalCommandInteractionHandlerRegistry.getByID(id);
         if (commandInteractionHandler.isPresent()) return commandInteractionHandler;
-        else return guildCommandInteractionHandlerRegistry.get(id);
+        else return guildCommandInteractionHandlerRegistry.getByID(id);
     }
 
     /**
