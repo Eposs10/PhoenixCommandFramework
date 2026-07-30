@@ -1,6 +1,6 @@
 package dev.eposs.pcf.permission;
 
-import dev.eposs.pcf.PCF;
+import dev.eposs.pcf.api.PCF;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.interactions.callbacks.IReplyCallback;
