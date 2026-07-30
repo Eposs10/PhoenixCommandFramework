@@ -1,13 +1,14 @@
 package dev.eposs.pcf.internal;
 
 import dev.eposs.pcf.api.PCF;
+import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.jetbrains.annotations.NotNull;
 
-public interface InteractionHandler<T> {
+public interface InteractionHandler<T extends GenericEvent> {
 
     /// Executes the interaction handler.
     ///

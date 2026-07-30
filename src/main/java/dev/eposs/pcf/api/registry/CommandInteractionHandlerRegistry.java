@@ -4,6 +4,7 @@ import dev.eposs.pcf.api.PCF;
 import dev.eposs.pcf.internal.CommandInteractionHandler;
 import dev.eposs.pcf.internal.registry.CommandInteractionHandlerRegistryImpl;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,7 +32,7 @@ public class CommandInteractionHandlerRegistry {
      * @param type    the registration scope (GLOBAL or GUILD)
      * @param command the command instance to register
      */
-    public void register(Type type, CommandInteractionHandler command) {
+    public void register(Type type, CommandInteractionHandler<? extends GenericCommandInteractionEvent> command) {
         switch (type) {
             case GLOBAL -> globalCommandInteractionHandlerRegistry.register(command);
             case GUILD -> guildCommandInteractionHandlerRegistry.register(command);
@@ -44,7 +45,7 @@ public class CommandInteractionHandlerRegistry {
      * @param type     the registration scope (GLOBAL or GUILD)
      * @param commands the command instances to register
      */
-    public void registerAll(Type type, List<CommandInteractionHandler> commands) {
+    public void registerAll(Type type, List<CommandInteractionHandler<? extends GenericCommandInteractionEvent>> commands) {
         commands.forEach(command -> register(type, command));
     }
 
@@ -54,9 +55,9 @@ public class CommandInteractionHandlerRegistry {
      * @param id the command name to resolve
      * @return an Optional containing the command if found, otherwise empty
      */
-    public Optional<CommandInteractionHandler> get(String id) {
+    public Optional<CommandInteractionHandler<? extends GenericCommandInteractionEvent>> get(String id) {
         if (id == null || id.isEmpty()) return Optional.empty();
-        Optional<CommandInteractionHandler> commandInteractionHandler = globalCommandInteractionHandlerRegistry.get(id);
+        var commandInteractionHandler = globalCommandInteractionHandlerRegistry.get(id);
         if (commandInteractionHandler.isPresent()) return commandInteractionHandler;
         else return guildCommandInteractionHandlerRegistry.get(id);
     }

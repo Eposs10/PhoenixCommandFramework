@@ -11,13 +11,13 @@ import java.util.List;
 public class ExampleMain {
     public static void main(String[] args) {
         PCF pcf = new PCF("ownerID");
-        pcf.getCommandInteractionHandlerRegistry().registerAll(
+        pcf.COMMANDS.registerAll(
                 CommandInteractionHandlerRegistry.Type.GLOBAL,
                 List.of(
                         new ExampleCommand()
                 )
         );
-        pcf.getButtonInteractionHandlerRegistry().registerAll(List.of(
+        pcf.BUTTONS.registerAll(List.of(
                 new ExampleButton()
         ));
 

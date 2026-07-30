@@ -1,11 +1,12 @@
 package dev.eposs.pcf.internal;
 
+import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 
 import java.util.Set;
 
 /// Base contract for all bot commands.
-public interface CommandInteractionHandler<T> extends InteractionHandler<T> {
+public interface CommandInteractionHandler<T extends GenericCommandInteractionEvent> extends InteractionHandler<T> {
 
     /// Provides the JDA command definition for this command.
     CommandData getCommandData();

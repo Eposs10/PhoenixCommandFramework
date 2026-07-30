@@ -14,11 +14,11 @@ public class PCF {
     private final String botOwnerID;
     private final Set<String> trustedUsersIDs = Collections.newSetFromMap(new ConcurrentHashMap<>());
 
-    private final ButtonInteractionHandlerRegistry buttonInteractionHandlerRegistry = new ButtonInteractionHandlerRegistry();
-    private final CommandInteractionHandlerRegistry commandInteractionHandlerRegistry = new CommandInteractionHandlerRegistry();
-    private final EntitySelectInteractionHandlerRegistry entitySelectInteractionHandlerRegistry = new EntitySelectInteractionHandlerRegistry();
-    private final ModalInteractionHandlerRegistry modalInteractionHandlerRegistry = new ModalInteractionHandlerRegistry();
-    private final StringSelectInteractionHandlerRegistry stringSelectInteractionHandlerRegistry = new StringSelectInteractionHandlerRegistry();
+    public final ButtonInteractionHandlerRegistry BUTTONS = new ButtonInteractionHandlerRegistry();
+    public final CommandInteractionHandlerRegistry COMMANDS = new CommandInteractionHandlerRegistry();
+    public final EntitySelectInteractionHandlerRegistry ENTITY_SELECT_MENUS = new EntitySelectInteractionHandlerRegistry();
+    public final ModalInteractionHandlerRegistry MODALS = new ModalInteractionHandlerRegistry();
+    public final StringSelectInteractionHandlerRegistry STRING_SELECT_MENUS = new StringSelectInteractionHandlerRegistry();
 
     /**
      * Initializes the PhoenixCommandFramework with the given bot owner ID and an initial set of trusted user IDs.
@@ -94,25 +94,5 @@ public class PCF {
      */
     public boolean isTrustedUser(String userID) {
         return trustedUsersIDs.contains(userID);
-    }
-
-    public ButtonInteractionHandlerRegistry getButtonInteractionHandlerRegistry() {
-        return buttonInteractionHandlerRegistry;
-    }
-
-    public CommandInteractionHandlerRegistry getCommandInteractionHandlerRegistry() {
-        return commandInteractionHandlerRegistry;
-    }
-
-    public EntitySelectInteractionHandlerRegistry getEntitySelectInteractionHandlerRegistry() {
-        return entitySelectInteractionHandlerRegistry;
-    }
-
-    public ModalInteractionHandlerRegistry getModalInteractionHandlerRegistry() {
-        return modalInteractionHandlerRegistry;
-    }
-
-    public StringSelectInteractionHandlerRegistry getStringSelectInteractionHandlerRegistry() {
-        return stringSelectInteractionHandlerRegistry;
     }
 }
