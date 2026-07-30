@@ -1,7 +1,7 @@
 package dev.eposs.pcf.api.registry;
 
 import dev.eposs.pcf.api.handler.EntitySelectInteractionHandler;
-import dev.eposs.pcf.internal.registry.AbstractRegistry;
+import dev.eposs.pcf.internal.AbstractRegistry;
 
 public class EntitySelectInteractionHandlerRegistry extends AbstractRegistry<EntitySelectInteractionHandler> {
     @Override

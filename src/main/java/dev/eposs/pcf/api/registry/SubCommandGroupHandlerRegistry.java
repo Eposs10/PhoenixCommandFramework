@@ -1,7 +1,7 @@
 package dev.eposs.pcf.api.registry;
 
 import dev.eposs.pcf.api.handler.SubCommandGroupHandler;
-import dev.eposs.pcf.internal.registry.AbstractRegistry;
+import dev.eposs.pcf.internal.AbstractRegistry;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData;
 
 import java.util.List;

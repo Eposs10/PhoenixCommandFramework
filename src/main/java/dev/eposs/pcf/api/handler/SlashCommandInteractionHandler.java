@@ -5,12 +5,8 @@ import dev.eposs.pcf.api.registry.SubCommandGroupHandlerRegistry;
 import dev.eposs.pcf.api.registry.SubCommandHandlerRegistry;
 import dev.eposs.pcf.internal.CommandInteractionHandler;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
-import net.dv8tion.jda.api.interactions.commands.OptionMapping;
-import net.dv8tion.jda.api.interactions.commands.OptionType;
-import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Optional;

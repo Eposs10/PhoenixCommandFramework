@@ -14,7 +14,7 @@ public class ExampleSubCommand extends SubCommandHandler {
     }
 
     @Override
-    public void execute(PCF pcf, SlashCommandInteractionEvent slashCommandInteractionEvent) throws Exception {
+    public void execute(PCF pcf, SlashCommandInteractionEvent event) throws Exception {
 
     }
 }

@@ -1,6 +1,5 @@
-package dev.eposs.pcf.api.handler;
+package dev.eposs.pcf.api;
 
-import dev.eposs.pcf.api.PCF;
 import net.dv8tion.jda.api.interactions.InteractionHook;
 import net.dv8tion.jda.api.interactions.callbacks.IReplyCallback;
 import org.jetbrains.annotations.NotNull;

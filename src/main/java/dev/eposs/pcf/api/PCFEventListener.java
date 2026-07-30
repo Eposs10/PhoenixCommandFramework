@@ -1,6 +1,5 @@
 package dev.eposs.pcf.api;
 
-import dev.eposs.pcf.api.handler.ExceptionHandler;
 import dev.eposs.pcf.internal.DefaultExceptionHandler;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
@@ -68,9 +67,9 @@ public class PCFEventListener extends ListenerAdapter {
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used /{}", event.getUser().getName(), event.getUser().getId(), event.getFullCommandName());
-            pcf.COMMANDS.get(event.getName()).ifPresent(cmd -> {
+            pcf.COMMANDS.get(event.getName()).ifPresent(handler -> {
                 try {
-                    cmd.execute(pcf, event);
+                    handler.executeRaw(pcf, event);
                 } catch (Exception e) {
                     exceptionHandler.handleException(e, event);
                 }
@@ -86,9 +85,9 @@ public class PCFEventListener extends ListenerAdapter {
 
             PCF.LOGGER.info("{} ({}) used button \"{}\"", event.getUser().getName(), event.getUser().getId(), customId);
 
-            pcf.BUTTONS.get(customId).ifPresent(action -> {
+            pcf.BUTTONS.get(customId).ifPresent(handler -> {
                 try {
-                    action.execute(pcf, event);
+                    handler.executeRaw(pcf, event);
                 } catch (Exception e) {
                     exceptionHandler.handleException(e, event);
                 }
@@ -100,9 +99,9 @@ public class PCFEventListener extends ListenerAdapter {
     public void onMessageContextInteraction(@NotNull MessageContextInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used message context command \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getName());
-            pcf.COMMANDS.get(event.getName()).ifPresent(cmd -> {
+            pcf.COMMANDS.get(event.getName()).ifPresent(handler -> {
                 try {
-                    cmd.execute(pcf, event);
+                    handler.executeRaw(pcf, event);
                 } catch (Exception e) {
                     exceptionHandler.handleException(e, event);
                 }
@@ -114,9 +113,9 @@ public class PCFEventListener extends ListenerAdapter {
     public void onUserContextInteraction(@NotNull UserContextInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used user context command \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getName());
-            pcf.COMMANDS.get(event.getName()).ifPresent(cmd -> {
+            pcf.COMMANDS.get(event.getName()).ifPresent(handler -> {
                 try {
-                    cmd.execute(pcf, event);
+                    handler.executeRaw(pcf, event);
                 } catch (Exception e) {
                     exceptionHandler.handleException(e, event);
                 }
@@ -128,9 +127,9 @@ public class PCFEventListener extends ListenerAdapter {
     public void onModalInteraction(@NotNull ModalInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used modal \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getModalId());
-            pcf.MODALS.get(event.getModalId()).ifPresent(modal -> {
+            pcf.MODALS.get(event.getModalId()).ifPresent(handler -> {
                 try {
-                    modal.execute(pcf, event);
+                    handler.executeRaw(pcf, event);
                 } catch (Exception e) {
                     exceptionHandler.handleException(e, event);
                 }
@@ -142,9 +141,9 @@ public class PCFEventListener extends ListenerAdapter {
     public void onStringSelectInteraction(@NotNull StringSelectInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used string select \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getSelectMenu().getCustomId());
-            pcf.STRING_SELECT_MENUS.get(event.getSelectMenu().getCustomId()).ifPresent(action -> {
+            pcf.STRING_SELECT_MENUS.get(event.getSelectMenu().getCustomId()).ifPresent(handler -> {
                 try {
-                    action.execute(pcf, event);
+                    handler.executeRaw(pcf, event);
                 } catch (Exception e) {
                     exceptionHandler.handleException(e, event);
                 }
@@ -156,9 +155,9 @@ public class PCFEventListener extends ListenerAdapter {
     public void onEntitySelectInteraction(@NotNull EntitySelectInteractionEvent event) {
         threadFactory.newThread(() -> {
             PCF.LOGGER.info("{} ({}) used entity select \"{}\"", event.getUser().getName(), event.getUser().getId(), event.getSelectMenu().getCustomId());
-            pcf.ENTITY_SELECT_MENUS.get(event.getSelectMenu().getCustomId()).ifPresent(action -> {
+            pcf.ENTITY_SELECT_MENUS.get(event.getSelectMenu().getCustomId()).ifPresent(handler -> {
                 try {
-                    action.execute(pcf, event);
+                    handler.executeRaw(pcf, event);
                 } catch (Exception e) {
                     exceptionHandler.handleException(e, event);
                 }

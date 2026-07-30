@@ -1,11 +1,12 @@
 package dev.eposs.pcf.api.handler;
 
 import dev.eposs.pcf.api.PCF;
+import dev.eposs.pcf.internal.InteractionHandler;
 import net.dv8tion.jda.api.components.selections.StringSelectMenu;
 import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import org.jetbrains.annotations.NotNull;
 
-public interface StringSelectInteractionHandler {
+public interface StringSelectInteractionHandler extends InteractionHandler<StringSelectInteractionEvent> {
 
     String getIdPrefix();
 

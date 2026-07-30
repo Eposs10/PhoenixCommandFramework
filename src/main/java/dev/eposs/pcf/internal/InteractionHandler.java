@@ -12,10 +12,15 @@ public interface InteractionHandler<T extends GenericEvent> {
 
     /// Executes the interaction handler.
     ///
-    /// @param pcf the [PCF] instance
-    /// @param t   the incoming interaction
+    /// @param pcf   the [PCF] instance
+    /// @param event the incoming interaction
     /// @throws Exception if execution fails
-    void execute(PCF pcf, T t) throws Exception;
+    void execute(PCF pcf, T event) throws Exception;
+
+    @SuppressWarnings("unchecked")
+    default void executeRaw(PCF pcf, GenericEvent event) throws Exception {
+        execute(pcf, (T) event);
+    }
 
     /// Standard optional boolean option to control whether a command response should be ephemeral. If omitted, the default behavior should be ephemeral.
     ///

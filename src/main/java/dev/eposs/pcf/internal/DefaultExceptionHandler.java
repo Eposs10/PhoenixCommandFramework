@@ -1,6 +1,6 @@
 package dev.eposs.pcf.internal;
 
-import dev.eposs.pcf.api.handler.ExceptionHandler;
+import dev.eposs.pcf.api.ExceptionHandler;
 import net.dv8tion.jda.api.interactions.callbacks.IReplyCallback;
 import org.jetbrains.annotations.NotNull;
 

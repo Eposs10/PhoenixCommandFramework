@@ -1,9 +1,9 @@
 package dev.eposs.pcf.api.handler;
 
 import dev.eposs.pcf.api.PCF;
+import dev.eposs.pcf.internal.InteractionHandler;
 import net.dv8tion.jda.api.components.buttons.Button;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a handler for a Discord button interaction.
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
  * incoming custom id starts with the given prefix.
  * </p>
  */
-public interface ButtonInteractionHandler {
+public interface ButtonInteractionHandler extends InteractionHandler<ButtonInteractionEvent> {
 
     /**
      * The unique prefix used to identify and route button interactions for this action.
@@ -31,7 +31,7 @@ public interface ButtonInteractionHandler {
      * @param event the JDA button interaction event
      * @throws Exception if the execution fails for any reason
      */
-    void execute(PCF pcf, @NotNull ButtonInteractionEvent event) throws Exception;
+    void execute(PCF pcf, ButtonInteractionEvent event) throws Exception;
 
     /**
      * Utility to add this action's {@link #getIdPrefix()} to the provided button's custom id.
@@ -40,7 +40,7 @@ public interface ButtonInteractionHandler {
      * @param buttonWithSuffix a button whose custom id contains only the suffix part
      * @return a new {@link Button} instance with the full custom id consisting of prefix + suffix
      */
-    default Button withPrefixedId(@NotNull Button buttonWithSuffix) {
+    default Button withPrefixedId(Button buttonWithSuffix) {
         return buttonWithSuffix.withCustomId(getIdPrefix() + buttonWithSuffix.getCustomId());
     }
 }

@@ -1,15 +1,15 @@
-package dev.eposs.pcf.internal.registry;
+package dev.eposs.pcf.api.registry;
 
+import dev.eposs.pcf.internal.AbstractRegistry;
 import dev.eposs.pcf.internal.CommandInteractionHandler;
-import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CommandInteractionHandlerRegistryImpl extends AbstractRegistry<CommandInteractionHandler<? extends GenericCommandInteractionEvent>> {
+public class GenericCommandInteractionHandlerRegistry extends AbstractRegistry<CommandInteractionHandler<?>> {
     @Override
-    public void register(CommandInteractionHandler<? extends GenericCommandInteractionEvent> commandInteractionHandler) {
+    public void register(CommandInteractionHandler<?> commandInteractionHandler) {
         handlers.put(commandInteractionHandler.getCommandData().getName(), commandInteractionHandler);
     }
 
@@ -17,7 +17,7 @@ public class CommandInteractionHandlerRegistryImpl extends AbstractRegistry<Comm
         return handlers.values().stream().map(CommandInteractionHandler::getCommandData).toList();
     }
 
-    public List<CommandData> getCommandData(Predicate<CommandInteractionHandler<? extends GenericCommandInteractionEvent>> filter) {
+    public List<CommandData> getCommandData(Predicate<CommandInteractionHandler<?>> filter) {
         return handlers.values().stream().filter(filter).map(CommandInteractionHandler::getCommandData).toList();
     }
 }

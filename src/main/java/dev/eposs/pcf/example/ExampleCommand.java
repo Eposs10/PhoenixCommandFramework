@@ -1,11 +1,8 @@
 package dev.eposs.pcf.example;
 
-import dev.eposs.pcf.api.PCF;
 import dev.eposs.pcf.api.handler.SlashCommandInteractionHandler;
 import dev.eposs.pcf.api.handler.SubCommandGroupHandler;
 import dev.eposs.pcf.api.handler.SubCommandHandler;
-import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
-import net.dv8tion.jda.api.interactions.commands.Command;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 

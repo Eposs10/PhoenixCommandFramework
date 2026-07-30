@@ -1,7 +1,7 @@
 package dev.eposs.pcf.api.registry;
 
 import dev.eposs.pcf.api.handler.ModalInteractionHandler;
-import dev.eposs.pcf.internal.registry.AbstractRegistry;
+import dev.eposs.pcf.internal.AbstractRegistry;
 
 import java.util.Optional;
 
