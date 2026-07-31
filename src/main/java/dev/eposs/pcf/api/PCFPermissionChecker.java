@@ -61,7 +61,7 @@ public class PCFPermissionChecker {
     /// @throws IllegalStateException if the member on the interaction is `null`
     public boolean hasPermissions(Permission... permissions) throws IllegalStateException {
         Member member = interaction.getMember();
-        if (member == null) throw new IllegalStateException("Interaction member is null.");
+        if (member == null) throw new IllegalStateException("Member is null. This happens if the interaction is not from a guild.");
         boolean check = member.hasPermission(permissions);
         return replyAfterCheck(check);
     }
