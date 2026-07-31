@@ -25,24 +25,20 @@ public class PCFEventListener extends ListenerAdapter {
     private final PCF pcf;
     private final ExceptionHandler exceptionHandler;
 
-    /**
-     * Constructs a new instance of {@code PCFEventListener} with the specified {@code PCF} instance
-     * and exception handler.
-     *
-     * @param pcf              the {@link PCF} instance
-     * @param exceptionHandler the {@link ExceptionHandler}, must not be null
-     */
+    /// Constructs a new instance of `PCFEventListener` with the specified `PCF` instance
+    /// and exception handler.
+    ///
+    /// @param pcf              the [PCF] instance
+    /// @param exceptionHandler the [ExceptionHandler], must not be null
     public PCFEventListener(PCF pcf, ExceptionHandler exceptionHandler) {
         this.pcf = pcf;
         this.exceptionHandler = exceptionHandler;
     }
 
-    /**
-     * Constructs a new {@code PCFEventListener} with the specified {@code PCF} instance.
-     * The {@link DefaultExceptionHandler} is used as the default exception handler.
-     *
-     * @param pcf the {@link PCF} instance
-     */
+    /// Constructs a new `PCFEventListener` with the specified `PCF` instance.
+    /// The [DefaultExceptionHandler] is used as the default exception handler.
+    ///
+    /// @param pcf the [PCF] instance
     public PCFEventListener(PCF pcf) {
         this.pcf = pcf;
         this.exceptionHandler = new DefaultExceptionHandler();

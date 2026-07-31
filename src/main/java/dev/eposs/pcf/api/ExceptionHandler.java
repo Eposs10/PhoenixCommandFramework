@@ -4,19 +4,15 @@ import net.dv8tion.jda.api.interactions.InteractionHook;
 import net.dv8tion.jda.api.interactions.callbacks.IReplyCallback;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Interface defining a mechanism for handling exceptions that occur while processing events.
- * Provides a default implementation for handling exceptions in a standardized manner, ensuring
- * proper logging and user notification through the callback mechanism.
- */
+/// Interface defining a mechanism for handling exceptions that occur while processing events.
+/// Provides a default implementation for handling exceptions in a standardized manner, ensuring
+/// proper logging and user notification through the callback mechanism.
 public interface ExceptionHandler {
-    /**
-     * Handles exceptions that occur during event processing by logging the error and
-     * notifying the user through an {@link IReplyCallback}.
-     *
-     * @param e     the exception that occurred during event processing, must not be null
-     * @param event the reply callback associated with the event, used to notify the user, must not be null
-     */
+    /// Handles exceptions that occur during event processing by logging the error and
+    /// notifying the user through an [IReplyCallback].
+    ///
+    /// @param e     the exception that occurred during event processing, must not be null
+    /// @param event the reply callback associated with the event, used to notify the user, must not be null
     default void handleException(Exception e, @NotNull IReplyCallback event) {
         PCF.LOGGER.error(e.getMessage(), e);
 

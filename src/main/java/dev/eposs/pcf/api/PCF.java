@@ -20,13 +20,11 @@ public class PCF {
     public final ModalInteractionHandlerRegistry MODALS = new ModalInteractionHandlerRegistry();
     public final StringSelectInteractionHandlerRegistry STRING_SELECT_MENUS = new StringSelectInteractionHandlerRegistry();
 
-    /**
-     * Initializes the PhoenixCommandFramework with the given bot owner ID and an initial set of trusted user IDs.
-     *
-     * @param botOwnerID          the Discord user ID of the bot owner, must not be null or blank
-     * @param initialTrustedUsers a set of Discord user IDs to initialize as trusted users, can be null
-     * @throws IllegalArgumentException if the bot owner ID is null or blank
-     */
+    /// Initializes the PhoenixCommandFramework with the given bot owner ID and an initial set of trusted user IDs.
+    ///
+    /// @param botOwnerID          the Discord user ID of the bot owner, must not be null or blank
+    /// @param initialTrustedUsers a set of Discord user IDs to initialize as trusted users, can be null
+    /// @throws IllegalArgumentException if the bot owner ID is null or blank
     public PCF(String botOwnerID, Set<String> initialTrustedUsers) throws IllegalArgumentException {
         if (botOwnerID == null || botOwnerID.isBlank()) {
             throw new IllegalArgumentException("Owner ID cannot be null or blank.");
@@ -38,60 +36,48 @@ public class PCF {
         }
     }
 
-    /**
-     * Initializes the PhoenixCommandFramework with the given bot owner ID and no initial trusted users.
-     *
-     * @param botOwnerID the Discord user ID of the bot owner, must not be null or blank
-     * @throws IllegalArgumentException if the bot owner ID is null or blank
-     */
+    /// Initializes the PhoenixCommandFramework with the given bot owner ID and no initial trusted users.
+    ///
+    /// @param botOwnerID the Discord user ID of the bot owner, must not be null or blank
+    /// @throws IllegalArgumentException if the bot owner ID is null or blank
     public PCF(String botOwnerID) {
         this(botOwnerID, null);
     }
 
-    /**
-     * Retrieves the Discord user ID of the bot owner.
-     *
-     * @return the Discord user ID of the bot owner
-     */
+    /// Retrieves the Discord user ID of the bot owner.
+    ///
+    /// @return the Discord user ID of the bot owner
     public String getBotOwnerID() {
         return botOwnerID;
     }
 
-    /**
-     * Retrieves the set of trusted user IDs configured in the framework.
-     *
-     * @return a {@code Set} containing the Discord user IDs of trusted users
-     */
+    /// Retrieves the set of trusted user IDs configured in the framework.
+    ///
+    /// @return a `Set` containing the Discord user IDs of trusted users
     public Set<String> getTrustedUsers() {
         return trustedUsersIDs;
     }
 
-    /**
-     * Adds a user ID to the set of trusted user IDs.
-     *
-     * @param userID the Discord user ID to add, must not be null
-     * @return true if the user ID was successfully added to the trusted users set, false if it was already present
-     */
+    /// Adds a user ID to the set of trusted user IDs.
+    ///
+    /// @param userID the Discord user ID to add, must not be null
+    /// @return true if the user ID was successfully added to the trusted users set, false if it was already present
     public boolean addTrustedUser(String userID) {
         return trustedUsersIDs.add(userID);
     }
 
-    /**
-     * Removes a user ID from the set of trusted user IDs.
-     *
-     * @param userID the Discord user ID to remove, must not be null
-     * @return true if the user ID was successfully removed from the trusted users set, false if the user ID was not present in the set
-     */
+    /// Removes a user ID from the set of trusted user IDs.
+    ///
+    /// @param userID the Discord user ID to remove, must not be null
+    /// @return true if the user ID was successfully removed from the trusted users set, false if the user ID was not present in the set
     public boolean removeTrustedUser(String userID) {
         return trustedUsersIDs.remove(userID);
     }
 
-    /**
-     * Checks if the given user ID is in the set of trusted user IDs.
-     *
-     * @param userID the Discord user ID to check, must not be null
-     * @return true if the user ID is in the trusted users set, false otherwise
-     */
+    /// Checks if the given user ID is in the set of trusted user IDs.
+    ///
+    /// @param userID the Discord user ID to check, must not be null
+    /// @return true if the user ID is in the trusted users set, false otherwise
     public boolean isTrustedUser(String userID) {
         return trustedUsersIDs.contains(userID);
     }
